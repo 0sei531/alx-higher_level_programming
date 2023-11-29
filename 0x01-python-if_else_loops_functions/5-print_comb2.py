@@ -1,2 +1,6 @@
 #!/usr/bin/python3
-print(*(map("{:02d}".format, range(100))), sep=", ")
+for number in range(100):
+    if number != 99:
+        print("{num:02d}".format(num=number), end=", ")
+    else:
+        print("{num:02d}".format(num=number), end="\n")
