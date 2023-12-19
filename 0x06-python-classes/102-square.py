@@ -1,75 +1,58 @@
-#!/usr/bin/python3
-"""
-A module that defines a class Square
-"""
-
-
 class Square:
     """
-    Class Square
-
-    Attributes:
-        size (int): Length of a side of the square.
+    A class that defines a square by its size.
     """
+
+    def __eq__(self, other):
+        return self.__size == other.__size
+
+    def __lt__(self, other):
+        return self.__size < other.__size
+
+    def __le__(self, other):
+        return self.__size <= other.__size
+
+    def __ne__(self, other):
+        return self.__size != other.__size
+
+    def __gt__(self, other):
+        return self.__size > other.__size
+
+    def __ge__(self, other):
+        return self.__size >= other.__size
+
     def __init__(self, size=0):
         """
-        The __init__ method initializes the attributes that are instantiated whenever an object is created.
-
-        Args:
-            size (int): Length of a side of the square.
+        Method to initialize the square object.
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        if size < 0:
+        elif size < 0:
             raise ValueError("size must be >= 0")
-        self.__size = size
-        """
-        Private instance attribute: size
-        """
+        else:
+            self.__size = size
+
     def area(self):
         """
-        Calculates the area of the square
-
-        Returns:
-            Area
+        Method that returns the square area of the object.
         """
-        return self.__size * self.__size
+        return self.__size ** 2
 
     @property
     def size(self):
         """
-        Getter method that returns the size
-
-        Returns:
-            Size
+        Method to return the size value.
         """
         return self.__size
 
     @size.setter
     def size(self, value):
         """
-        Setter method that sets the size
+        Method to set the size value of the square object.
         """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
-
-    def __lt__(self, value):
-        return self.__size < value.size
-
-    def __le__(self, value):
-        return self.__size <= value.size
-
-    def __eq__(self, value):
-        return self.__size == value.size
-
-    def __ne__(self, value):
-        return self.__size != value.size
-
-    def __ge__(self, value):
-        return self.__size >= value.size
-
-    def __gt__(self, value):
-        return self.__size > value.size
+        else:
+            self.__size = value
