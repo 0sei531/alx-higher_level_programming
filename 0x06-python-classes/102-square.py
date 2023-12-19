@@ -1,135 +1,76 @@
 #!/usr/bin/python3
+"""
+A module that defines a class Square
+"""
+
+
 class Square:
     """
-    A class that defines a square by its size.
+    Class Square
+
+    Attributes:
+        size (int): Length of a side of the square.
     """
-
-    def __eq__(self, other):
-        """
-        Checks if the size of the square is
-        equal to the size of another square.
-
-        Args:
-            other (Square): The other square to compare.
-
-        Returns:
-            bool: True if sizes are equal, False otherwise.
-        """
-        return self.__size == other.__size
-
-    def __lt__(self, other):
-        """
-        Checks if the size of the square is
-        less than the size of another square.
-
-        Args:
-            other (Square): The other square to compare.
-
-        Returns:
-            bool: True if the size is less, False otherwise.
-        """
-        return self.__size < other.__size
-
-    def __le__(self, other):
-        """
-        Checks if the size of the square is less
-        than or equal to the size of another square.
-
-        Args:
-            other (Square): The other square to compare.
-
-        Returns:
-            bool: True if the size is less than or equal, False otherwise.
-        """
-        return self.__size <= other.__size
-
-    def __ne__(self, other):
-        """
-        Checks if the size of the square is
-        not equal to the size of another square.
-
-        Args:
-            other (Square): The other square to compare.
-
-        Returns:
-            bool: True if sizes are not equal, False otherwise.
-        """
-        return self.__size != other.__size
-
-    def __gt__(self, other):
-        """
-        Checks if the size of the square is
-        greater than the size of another square.
-
-        Args:
-            other (Square): The other square to compare.
-
-        Returns:
-            bool: True if the size is greater, False otherwise.
-        """
-        return self.__size > other.__size
-
-    def __ge__(self, other):
-        """
-        Checks if the size of the square is greater
-        than or equal to the size of another square.
-
-        Args:
-            other (Square): The other square to compare.
-
-        Returns:
-            bool: True if the size is greater than or equal, False otherwise.
-        """
-        return self.__size >= other.__size
-
     def __init__(self, size=0):
         """
-        Initializes the square object with a default size.
+        The __init__ method initializes the attributes that are
+        instantiated whenever an object is created.
 
         Args:
-            size (int): The size of the square.
+            size (int): Length of a side of the square.
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        elif size < 0:
+        if size < 0:
             raise ValueError("size must be >= 0")
-        else:
-            self.__size = size
-
+        self.__size = size
+        """
+        Private instance attribute: size
+        """
     def area(self):
         """
-        Calculates the area of the square.
+        Calculates the area of the square
 
         Returns:
-            int: The area of the square.
+            Area
         """
-        return self.__size ** 2
+        return self.__size * self.__size
 
     @property
     def size(self):
         """
-        Retrieves the size value.
+        Getter method that returns the size
 
         Returns:
-            int: The size of the square.
+            Size
         """
         return self.__size
 
     @size.setter
     def size(self, value):
         """
-        Sets the size value of the square object.
-
-        Args:
-            value (int): The new size value.
-
-        Raises:
-            TypeError: If the size is not an integer.
-            ValueError: If the size is less than 0.
+        Setter method that sets the size
         """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
-        else:
-            self.__size = value
+        self.__size = value
+
+    def __lt__(self, value):
+        return self.__size < value.size
+
+    def __le__(self, value):
+        return self.__size <= value.size
+
+    def __eq__(self, value):
+        return self.__size == value.size
+
+    def __ne__(self, value):
+        return self.__size != value.size
+
+    def __ge__(self, value):
+        return self.__size >= value.size
+
+    def __gt__(self, value):
+        return self.__size > value.size
