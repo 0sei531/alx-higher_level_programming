@@ -162,4 +162,3 @@ class Rectangle:
         new_rect.width = size
         new_rect.height = size
         return new_rect
-
