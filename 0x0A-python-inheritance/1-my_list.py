@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-class MyList(list):
-    """Class that inherits the attributes and methods of the list class.
+"""The ``MyList`` module"""
 
-     Args:
-        list: The built-in list class.
-    """
+
+class MyList(list):
+    """MyList inherting from the ``list`` class"""
 
     def print_sorted(self):
-        """Method that prints the sorted list."""
+        """Print the list as sorted"""
         print(sorted(self))
