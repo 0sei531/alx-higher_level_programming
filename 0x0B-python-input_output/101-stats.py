@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 import sys
-from collections import defaultdict
 
 
-def print_info(file_size, status_codes):
+def print_info():
     print('File size: {:d}'.format(file_size))
 
     for scode, code_times in sorted(status_codes.items()):
@@ -11,32 +10,43 @@ def print_info(file_size, status_codes):
             print('{}: {:d}'.format(scode, code_times))
 
 
-# Ensure two blank lines before the function definition
-status_codes = defaultdict(int)
+status_codes = {
+    '200': 0,
+    '301': 0,
+    '400': 0,
+    '401': 0,
+    '403': 0,
+    '404': 0,
+    '405': 0,
+    '500': 0
+}
+
+lc = 0
 file_size = 0
 
 try:
-    for lc, line in enumerate(sys.stdin, start=1):
-        if lc % 10 == 0:
-            print_info(file_size, status_codes)
+    for line in sys.stdin:
+        if lc != 0 and lc % 10 == 0:
+            print_info()
 
         pieces = line.split()
 
         try:
             status = int(pieces[-2])
-            status_codes[str(status)] += 1
-        except (IndexError, ValueError) as e:
-            # Handle unexpected input
-            print(f"Skipping line {lc}: Unexpected log format - {e}")
+
+            if str(status) in status_codes.keys():
+                status_codes[str(status)] += 1
+        except:
+            pass
 
         try:
             file_size += int(pieces[-1])
-        except (IndexError, ValueError) as e:
-            # Handle unexpected input
-            print(f"Skipping line {lc}: Unexpected log format - {e}")
+        except:
+            pass
 
-    print_info(file_size, status_codes)
+        lc += 1
 
+    print_info()
 except KeyboardInterrupt:
-    print_info(file_size, status_codes)
+    print_info()
     raise
