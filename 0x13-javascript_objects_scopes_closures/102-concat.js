@@ -9,4 +9,3 @@ if (fileA && fileB && fileC) {
   text += fs.readFileSync(fileB);
   fs.writeFileSync(fileC, text);
 }
-
