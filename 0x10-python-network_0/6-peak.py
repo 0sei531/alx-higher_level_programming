@@ -1,29 +1,30 @@
-# Correcting block comment
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
-A peak in a list is a value that is greater than or equal to its neighbors.
+find the peak in an unordered list of
+integers
 """
 
 
 def find_peak(list_of_integers):
     """
-    Function to find a peak in a list of integers.
+    find the peak in a list of intergers
+    Args:
+        list_of_integers(list) -> List of intergers
+    Return:
+        int(the peak integer(s))
     """
-    if not list_of_integers:
+    if len(list_of_integers) == 0:
         return None
-
-    n = len(list_of_integers)
-    if n == 1:
+    if len(list_of_integers) == 1:
         return list_of_integers[0]
+    if len(list_of_integers) == 2:
+        return max(list_of_integers)
 
-    start, end = 0, n - 1
-
-    while start < end:
-        mid = (start + end) // 2
-        if list_of_integers[mid] < list_of_integers[mid + 1]:
-            start = mid + 1
-        else:
-            end = mid
-
-    return list_of_integers[start]
-
+    mid = int(len(list_of_integers) / 2)
+    peak = list_of_integers[mid]
+    if peak > list_of_integers[mid - 1] and peak > list_of_integers[mid + 1]:
+        return peak
+    elif peak < list_of_integers[mid - 1]:
+        return find_peak(list_of_integers[:mid])
+    else:
+        return find_peak(list_of_integers[mid + 1:])
