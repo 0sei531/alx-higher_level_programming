@@ -1,0 +1,1 @@
+Programming languages that require less knowledge about computer hardware are called "high-level" programming languages. It doesn't matter whether a programming language is considered easy to learn or not. Rather than dealing with functions of computer hardware, high-level programming languages deal with more abstract concepts.
