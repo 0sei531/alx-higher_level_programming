@@ -1,4 +1,5 @@
 
 #!/bin/bash
-# display only the status code of a response
-curl -o /dev/null -sIw "%{http_code}" "$1"
+# This program sends a request to a URL passed as an argument, and displays only the status code of the response.
+curl -s -o /dev/null -w '%{http_code}' "$1"
+

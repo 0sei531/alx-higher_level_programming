@@ -1,5 +1,5 @@
 
 #!/bin/bash
-# send a GET request to the URL passed as an argument and print the response
-curl -s -X DELETE "$1";
+# Sends a DELETE request to the URL passed as the first argument and displays the body of the response.
+curl -s "$1" -X DELETE
 
