@@ -8,4 +8,3 @@ const url = `https://swapi-api.hbtn.io/api/films/${id}`;
 request(url, (error, response, body) => {
   console.log(error || JSON.parse(body).title);
 });
-

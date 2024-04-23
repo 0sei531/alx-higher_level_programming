@@ -20,4 +20,3 @@ request(apiUrl, (error, response, body) => {
     console.error(error || 'Failed to fetch data');
   }
 });
-
